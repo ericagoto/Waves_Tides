@@ -1,0 +1,12 @@
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HW[?1034hEricas-MacBook-Pro-3:HW ericagoto$ [KEricas-MacBook-Pro-3:HW ericagoto$ git remote add origin
+fatal: not a git repository (or any of the parent directories): .git
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HWEricas-MacBook-Pro-3:HW ericagoto$ git remote add origion [K[K[Kn https://github.com/ericagoto/Wave s_Tides.git
+fatal: not a git repository (or any of the parent directories): .git
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HWEricas-MacBook-Pro-3:HW ericagoto$ git remote add origin https://github.com/ericagoto/Wave s_Tides.git
+fatal: not a git repository (or any of the parent directories): .git
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HWEricas-MacBook-Pro-3:HW ericagoto$ git init
+Initialized empty Git repository in /Users/ericagoto/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HW/.git/
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HWEricas-MacBook-Pro-3:HW ericagoto$ git add
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+]0;~/Dropbox/ESTUDOS/erica phD/classes/TA/Waves-and-Tides-Spring2019/HW/HWEricas-MacBook-Pro-3:HW ericagoto$ git add . 

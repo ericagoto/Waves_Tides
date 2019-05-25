@@ -1,0 +1,113 @@
+---
+title: "Hw 06"
+author: "Erica Goto"
+date: "5/23/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## HW 06
+
+1. In this problem you will estimate magnitudes of the tide-producing force (TPF) at two points on the earth’s surface, G and P as shown in the diagram. At point P the TPF (purple arrow) lies in the local horizontal plane (red line). At point G the TPF points along a vertical line at right angles to the local horizontal plane. For reference see also Figure 2.3 in the Open University text. 
+a) Estimate the magnitude at G of the tide-producing force TPFG acting on a mass of seawater m = 1 kg. The magnitude of TPFG is given by equation 2.2 in the Open University text. In equation 2.2 take M2 to be the mass of the moon Mm. 
+
+```{r}
+TPF_G <- function (G, m=1, Mmoon, a, R) {
+  G = 6.672*10^(-11)
+  Mmoon = 0.07348*10^(24)
+  a = 6.31*10^6
+  R =0.38*10^9
+  
+  TPF <- (G*m*Mmoon*2*a)/(R^3)
+  return (TPF)
+    
+}
+
+TPF_G <- TPF_G()
+```
+
+b) Compare TPFG with the earth’s gravitational force FgG acting on the mass of seawater m by first finding an algebraic expression for the ratio FgG /TPFG. Evaluate your expression using numbers. Which force is larger? Would TPFG produce ocean currents at point G? Briefly explain why or why not. 
+```{r}
+
+FgG <- function(G,m=1, M_earth, a){
+   G = 6.672*10^(-11)
+  M_earth = 5.972*10^(24)
+  a = 6.31*10^6
+  
+  FgG <- (G*m*M_earth)/(a^2)
+  return(FgG)
+  
+}
+
+FgG <- FgG(G,m=1, M_earth, R)
+
+ratio <- (FgG)/(TPF_G) 
+
+ratio
+```
+
+C) Estimate the magnitude at P of the tide-producing force TPFp acting on a mass of seawater m = 1 kg assuming that the magnitude of TPFp » 0.7 TPFG. Note that the factor 0.7 is estimated from Figure 13.3b in the Pond and Pickard text. Point P is where y » 55° (y is the Greek letter “psi”) and where the component of the TPF in the horizontal plane is maximum (see Figures 2.3 and 2.4b in the open University text). 
+TPFp = 0.7 TPFG
+```{r}
+TPF_P = 0.7*TPF_G
+TPF_P
+```
+
+d) Over Dt = 24 hr, what change in horizontal speed DV would be imparted to the m = 1 kg mass of seawater by the horizontal tide-producing force in part c? Recall that DV = a DT. Here a is the acceleration due to the horizontal tide- producing force at P. 
+Type equation here.
+a = v/t -> v = a*t
+F = m*a -> a =F/m
+
+```{r}
+t=24*60*60
+#v=?
+m=1
+F = TPF_P
+
+v = (F/m)*t
+v
+  
+```
+
+2. a) Find the increase in the tide-producing force as the moon travels from apogee to perigee in its orbit around the earth. Do this by finding an algebraic expression for the ratio R = (TPFP - TPFA)/TPFM. Note that R is the difference in tide-producing force at perigee minus the tide-producing force apogee normalized by the mean tide-producing force TPFM. In the equation for R: P, A, and M indicate perigee, apogee, and mean distance, respectively. Evaluate R using numbers on the data sheet for tidal calculations on GauchoSpace. Also express R as a percent. 
+```{r}
+ G = 6.672*10^(-11)
+  Mmoon = 0.07348*10^(24)
+  a = 6.31*10^6
+R_min = 363104
+R_max = 405696
+R_mean = 384400
+
+
+TPF_P = (G*m*Mmoon*2*a)/(R_min^3)
+TPF_A = (G*m*Mmoon*2*a)/(R_max^3)
+TPF_M = (G*m*Mmoon*2*a)/(R_mean^3)
+
+ R = (TPF_P - TPF_A)/TPF_M
+R
+  
+```
+
+b) Repeat part a), but for the increase in the tide producing force on the earth it travels in its orbit from its farthest point from the sun (aphelion, A) to its nearest point (perihelion, P). Find the corresponding ratio R. Also express R as a percent. 
+
+
+```{r}
+ G = 6.672*10^(-11)
+  Mmoon = 0.07348*10^(24)
+  a = 6.31*10^6
+R_min = 147*10^6
+R_max = 152*10^6
+R_mean = 149.597*10^6
+
+
+TPF_P = (G*m*Mmoon*2*a)/(R_min^3)
+TPF_A = (G*m*Mmoon*2*a)/(R_max^3)
+TPF_M = (G*m*Mmoon*2*a)/(R_mean^3)
+
+ R = (TPF_P - TPF_A)/TPF_M
+R
+  
+```

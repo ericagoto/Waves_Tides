@@ -1,0 +1,59 @@
+---
+title: "Homework 02"
+author: "E G"
+date: "April 16, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+3. 3. An ocean wave with a period T = 27 s is traveling in a water depth of d = 100 m. At this depth neither the deep-water nor the shallow-water approximations are valid. Recall that this is the full dispersion relation for surface gravity wave in any water depth d. 
+ (2/T)2 = (g2/L) tanh(2d/L) 
+Use the full dispersion relation to estimate the wavelength L.
+Notice that you can’t solve this equation for wavelength L directly. Instead you will solve the equation by guessing L and checking to see if both sides of the equation are equal. 
+You can use the following steps to estimate L. (Note that all parts of the above equation are known except L.) 
+1. Start with a guess of wavelength L. You might, for example, try the deep-water wavelength with period T = 27 s. 
+2. Calculate the quantity: A = (2/T)2 - (2g/L) tanh(2d/L) 
+Note that A is just the left hand side of the dispersion relation (above in bold) minus the right hand side. With a nearly correct value of L, A will be close to zero. If you found the exact value of L then A would be exactly zero.
+3. Try different values of L systematically such that A gets smaller for each value of L. 
+4. When A is in the range of about -0.0005 to about +0.0005, your estimate of L will be a reasonable approximation of the exact value of L.  In studies of waves, versions of this trial-and-error procedure are typically used for solving this equation. 
+Feel free to use Excel for this. For example, you could enter the equation for A into Excel which would make A easy to calculate. You could also use a programmable calculator.  If you are familiar with a programming language like MATLAB you could also use that.
+
+
+#Following steps 1 and 2
+```{r}
+T = 27 #perid in s
+g = 9.8 #gravity
+d=100 #depth in m
+
+L <- g*(T^2)/(2*pi) #deep water
+
+A <- function (T, g, L, d){
+A <- (2*pi/T)^2-(2*pi*g/L)*tanh(2*pi*d/L)
+return(A)
+}
+A (T=27, g=9.8, d=100, L=1137)
+```
+
+#Trying small values of L
+
+```{r}
+
+A1 <- A(T=27, g=9.8, d=100, L=1000)
+A2 <- A(T=27, g=9.8, d=100, L=800)
+A3 <- A(T=27, g=9.8, d=100, L=500)
+A4 <- A(T=27, g=9.8, d=100, L=300)
+
+
+L<-c(600:800)
+
+A_values <- A(T=27, g=9.8, d=100, L=L)
+
+df <-data.frame("Wavelength" <- L,
+                  "A"<- A_values)
+df
+
+```
+
